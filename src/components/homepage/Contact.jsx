@@ -109,7 +109,7 @@ export default function Contact() {
 
     setStatus("loading");
     try {
-      const res = await fetch("/.netlify/functions/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -232,7 +232,7 @@ export default function Contact() {
                   {status === "loading" && (
                     <span className="h-3 w-3 animate-spin rounded-full border-2 border-secondary-200 border-t-transparent"></span>
                   )}
-                  <span className="absolute bottom-2 h-1 w-0 bg-secondary-700 opacity-90 duration-300 ease-out group-hover:w-full"></span>
+                  <span className="absolute bottom-0 h-[0.1em] w-0 bg-secondary-700 opacity-90 duration-300 ease-out group-hover:w-full"></span>
                   <span className="group-hover:text-accent-400">
                     {status === "loading"
                       ? "Sending…"
