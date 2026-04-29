@@ -25,8 +25,7 @@ export default async function handler(req, res) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "Wuniabdulai19@gmail.com",
-      reply_to: email,
+      to: "wuniabdulai19@gmail.com",
       subject: `New message from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
