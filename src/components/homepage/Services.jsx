@@ -21,6 +21,7 @@ export default function Services() {
     "Firebase",
     "Git/GitHub",
     "Tailwind CSS",
+    "React",
     "Django",
   ];
 

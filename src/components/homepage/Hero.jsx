@@ -52,8 +52,9 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
+    let intervalId;
     const startDelay = setTimeout(() => {
-      const id = setInterval(() => {
+      intervalId = setInterval(() => {
         gsap.to(subtitleBottomRef.current, {
           opacity: 0, y: -10, duration: 0.35, ease: "power2.in",
           onComplete: () => {
@@ -62,18 +63,17 @@ export default function Hero() {
           },
         });
       }, 2800);
-      startDelay._clearId = id;
     }, 1400);
     return () => {
       clearTimeout(startDelay);
-      if (startDelay._clearId) clearInterval(startDelay._clearId);
+      if (intervalId) clearInterval(intervalId);
     };
   }, []);
 
   return (
     <section
       id="hero"
-      className="hero relative flex w-full h-screen select-none items-center justify-center"
+      className="hero relative flex flex-col items-center justify-center gap-8 w-full pt-24 pb-16 sm:h-screen sm:pt-0 sm:pb-0 select-none sm:gap-0"
       aria-label="hero"
     >
       <div className="z-10 flex flex-col w-full items-center text-title 2xl:text-[10vw] 2xl:space-y-16 font-bold uppercase text-accent-300">
@@ -87,7 +87,7 @@ export default function Hero() {
             Hey, I&apos;m Wuni
           </h1>
         </div>
-        <div className="title 2xl:py-16">
+        <div className="title hidden md:block 2xl:py-16">
           <h1 ref={(el) => (titles.current[2] = el)} className="translate-y-96">
             Hey, I&apos;m Wuni
           </h1>
@@ -95,17 +95,7 @@ export default function Hero() {
       </div>
 
       {/* Cycling role card — pinned to bottom-center of hero */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "8%",
-          left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "center",
-          zIndex: 20,
-        }}
-      >
+      <div className="relative sm:absolute sm:bottom-[5%] left-0 right-0 flex justify-center z-20 w-full px-4 sm:px-0">
       <div
         ref={card}
         style={{

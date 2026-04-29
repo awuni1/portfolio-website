@@ -80,8 +80,13 @@
 @layer utilities {
   .title {
     clip-path: polygon(0 0, 200% 0, 100% 100%, 0% 100%);
-    line-height: clamp(6rem, 16vw, 10rem); /* Set the desired line height */
+    line-height: clamp(3rem, 12vw, 10rem);
+  }
 
+  @media (min-width: 768px) {
+    .title {
+      line-height: clamp(6rem, 16vw, 10rem);
+    }
   }
 
   nav a:hover ~ .cursor {
