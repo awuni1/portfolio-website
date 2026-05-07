@@ -5,7 +5,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
-  const { name, email, message } = req.body;
+  let body = req.body;
+  if (typeof body === "string") {
+    try {
+      body = JSON.parse(body);
+    } catch {
+      return res.status(400).json({ error: "Invalid JSON body" });
+    }
+  }
+
+  const { name, email, message } = body || {};
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -23,9 +32,10 @@ export default async function handler(req, res) {
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: "wuniabdulai19@gmail.com",
+      replyTo: email,
       subject: `New message from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
@@ -40,12 +50,16 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error("Resend error:", error);
-      return res.status(500).json({ error: "Failed to send email. Please try again." });
+      return res
+        .status(502)
+        .json({ error: error.message || "Failed to send email." });
     }
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, id: data?.id });
   } catch (err) {
     console.error("Unexpected error:", err);
-    return res.status(500).json({ error: "Failed to send email. Please try again." });
+    return res
+      .status(500)
+      .json({ error: err?.message || "Failed to send email." });
   }
 }
