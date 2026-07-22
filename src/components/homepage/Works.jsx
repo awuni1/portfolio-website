@@ -1,10 +1,10 @@
 import { useState } from "react";
-import mansa from "/src/assets/images/mansaweb.png";
-import bihr from "/src/assets/images/bihr.png";
+import mansa from "/src/assets/images/mansaweb.webp";
+import bihr from "/src/assets/images/bihr.webp";
 import learnova from "/src/assets/images/learnovate.jpeg";
-import mansaAdmin from "/src/assets/images/mansa-admin.png";
-import gasppy from "/src/assets/images/gasppy.png";
-import akumai from "/src/assets/images/akumai.png";
+import mansaAdmin from "/src/assets/images/mansa-admin.webp";
+import gasppy from "/src/assets/images/gasppy.webp";
+import akumai from "/src/assets/images/akumai.webp";
 import Projects from "../ui/Projects";
 import Heading from "../ui/Heading";
 
