@@ -4,6 +4,7 @@ import bihr from "/src/assets/images/bihr.png";
 import learnova from "/src/assets/images/learnovate.jpeg";
 import mansaAdmin from "/src/assets/images/mansa-admin.png";
 import gasppy from "/src/assets/images/gasppy.png";
+import akumai from "/src/assets/images/akumai.png";
 import Projects from "../ui/Projects";
 import Heading from "../ui/Heading";
 
@@ -76,6 +77,20 @@ const PROJECTS = [
       type: "Project Management • Mobile App Development",
       year: "2025",
       tools: "React Native • Spring Boot • Firebase • PostgreSQL • ChatGPT API",
+    },
+  },
+  {
+    id: "akumai",
+    layout: "col-span-1 pt-0 md:col-span-12",
+    category: "Frontend",
+    props: {
+      link: "https://akumaiacademy.com",
+      img: akumai,
+      alt: "Akumai Memorial Academy website mockup",
+      name: "Akumai Memorial Academy",
+      type: "Frontend Development",
+      year: "2026",
+      tools: "Next.js • TailwindCSS",
     },
   },
 ];
